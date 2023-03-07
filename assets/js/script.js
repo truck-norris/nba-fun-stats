@@ -59,5 +59,5 @@ function displayStats(event) {
 // }
 
 // Music API
-
+}
 statsForm.addEventListener('submit', displayStats);
