@@ -59,6 +59,7 @@ function displayStats(event) {
   };
 };
 
+console.log('hi mom');
 statsForm.addEventListener('submit', displayStats);
 
 // Autocomplete widget
