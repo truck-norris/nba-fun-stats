@@ -1,4 +1,6 @@
 body {
-    background-color: black;
-    color: white;
+    background-image: url("nba-logo-background-1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
