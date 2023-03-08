@@ -59,5 +59,53 @@ function displayStats(event) {
 // }
 
 // Music API
-
+}
 statsForm.addEventListener('submit', displayStats);
+
+// Autocomplete widget
+// $(function () {
+//   var teamNames = [
+//     'Boston Celtics',
+//     'Brooklyn Nets',
+//     'New York Knicks',
+//     'Philadelphia 76ers',
+//     'Toronto Raptors',
+//     'Chicago Bulls',
+//     'Cleveland Caveliers',
+//     'Detroit Pistons',
+//     'Indiana Pacers',
+//     'Milwaukee Bucks',
+//     'Atlanta Hawks',
+//     'Charlotte Hornets',
+//     'Miami Heat',
+//     'Orlando Magic',
+//     'Washington Wizards',
+//     'Denver Nuggets',
+//     'Minnesota Timberwolves',
+//     'Oklahoma City Thunder',
+//     'Portland Trail Blazers',
+//     'Utah Jazz',
+//     'Golden State Warriors',
+//     'Los Angeles Clippers',
+//     'Los Angeles Lakers',
+//     'Phoenix Suns',
+//     'Sacramento Kings',
+//     'Dallas Mavericks',
+//     'Houston Rockets',
+//     'Memphis Grizzlies',
+//     'New Orleans Pelicans',
+//     'San Antonio Spurs',
+//   ];
+//   $('#team-name').autocomplete({
+//     source: teamNames,
+//   });
+// });
+
+// Clear Button
+// var clearBtn = document.querySelector('#clear-btn')
+
+// function clearScreen() {
+//   location.reload();
+// };
+
+// clearBtn.addEventListener('click', clearScreen)
