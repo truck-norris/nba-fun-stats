@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-git 
-=======
-
 /*
 user types in team and selects from dropdown menu
 team stats and a song linked to the team will appear
