@@ -12,7 +12,7 @@
 // song and team stats dissappear
 
 var searchInput = document.querySelector('#query-term')
-var statsForm = document.querySelector('#giphy-form')
+var statsForm = document.querySelector('#search-dropdown')
 var imageContainer = document.querySelector('#giphy-images')
 
 function displayStats(event) {
