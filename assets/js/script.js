@@ -56,8 +56,12 @@ function displayStats(event) {
 // 	.then(response => response.json())
 // 	.then(response => console.log(response))
 // 	.catch(err => console.error(err));
+
+
 // }
 
 // Music API
+
+
 
 statsForm.addEventListener('submit', displayStats);
