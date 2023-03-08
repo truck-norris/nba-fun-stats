@@ -48,7 +48,15 @@ function displayStats(event) {
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
 
-// YouTube API
+  // YouTube API
+  function videos() {
+    console.log('it works')
+    // YT generic URL "https://www.googleapis.com/youtube/v3/search?q=something&key=YOUR_API_KEY&fields=items(id,snippet(title,thumbnails(default))&part=snippet" 
+    // Adrian's YT API key - AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI   
+    var youtubeUrl = "https://www.googleapis.com/youtube/v3/search?q="
+    var youtubeApi = "&limit=3&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI"
+    var youtubeVid = youtubeUrl+youtubeApi
+  };
 };
 
 statsForm.addEventListener('submit', displayStats);
