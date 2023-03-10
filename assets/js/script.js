@@ -25,11 +25,11 @@ inputBox.onkeyup = (e)=>{
   let userData = e.target.value; //user entered data
   let emptyArray = [];
   if(userData){
-    icon.onclick = ()=>{
-      webLink = '';
-      linkTag.setAttribute("href", webLink);
-      linkTag.click();
-    }
+    // icon.onclick = ()=>{
+    //   webLink = '';
+    //   linkTag.setAttribute("href", webLink);
+    //   linkTag.click();
+    // }
     emptyArray = teams.filter((data)=>{
       // filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
       return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
@@ -53,11 +53,11 @@ inputBox.onkeyup = (e)=>{
 function select(element){
     let selectData = element.textContent;
     inputBox.value = selectData;
-    icon.onclick = ()=>{
-        webLink = `https://www.google.com/search?q=${selectData}`;
-        linkTag.setAttribute("href", webLink);
-        linkTag.click();
-    }
+    // icon.onclick = ()=>{
+    //     webLink = `https://www.google.com/search?q=${selectData}`;
+    //     linkTag.setAttribute("href", webLink);
+    //     linkTag.click();
+    // }
     searchWrapper.classList.remove("active");
 }
 
@@ -79,28 +79,33 @@ function showTeams(list){
 //   location.reload();
 // };
 
-function displayStats(event) {
-  event.preventDefault()
-  var searchTerm = inputBox.value
-  var apiKey = '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195'
-  var nbaUrl = 'https://api-nba-v1.p.rapidapi.com/seasons'
-  var requestUrl = nbaUrl + '?api_key=' + apiKey + searchTerm
-
-giphyForm.addEventListener('submit', displayGiphys)
-
-  // NBA API
-  const options = {
-	  method: 'GET',
-	  headers: {
-		  'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
-		  'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
-	  }
+var searchInput = document.querySelector('#query-term')
+  var giphyForm = document.querySelector('#search-dropdown')
+  var imageContainer = document.querySelector('#giphy-images')
+  function displayGiphys(event) {
+      event.preventDefault()
+      var searchTerm = inputBox.value
+      console.log(searchTerm);
+      var apiKey = 'X1UC9EboOvWecSBjWd0oHOvipre8bgHX'
+      var giphyUrl = 'https://api.giphy.com/v1/gifs/search'
+      var requestUrl = giphyUrl + '?api_key=' + apiKey + '&limit=5&rating=g&q=' + searchTerm
+      fetch(requestUrl)
+      .then(function(response) {
+        console.log('The status of this page is', response.status + '.');
+        return response.json();
+      }).then(function(giphs) {
+        console.log('You searched for:', giphs.data);
+        for (var i = 0; i < giphs.data.length; i++) {
+          var title = giphs.data[i].title
+          var imageTag = document.createElement('img')
+          var imageTitle = document.createElement('p')
+          imageTag.setAttribute('src', giphs.data[i].images.original.url)
+          imageTitle.textContent = title
+          imageContainer.append(imageTag)
+        }
+      });
   };
-
-  fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=25', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+  
 
   // YouTube API
   function videos() {
@@ -114,5 +119,5 @@ giphyForm.addEventListener('submit', displayGiphys)
 
 
 console.log('hi mom');
-searchForm.addEventListener('submit', displayStats);
+icon.addEventListener('click', displayGiphys)
 // clearBtn.addEventListener('click', clearScreen);
