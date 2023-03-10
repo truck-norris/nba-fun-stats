@@ -12,7 +12,7 @@
 // song and team stats dissappear
 
 var searchInput = document.querySelector('#query-term')
-var statsForm = document.querySelector('#giphy-form')
+var statsForm = document.querySelector('#search-dropdown')
 var imageContainer = document.querySelector('#giphy-images')
 
 function displayStats(event) {
@@ -36,17 +36,27 @@ function displayStats(event) {
 
   // NBA API
   const options = {
-	  method: 'GET',
-	  headers: {
-		  'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
-		  'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
-	  }
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
+      'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
+    }
   };
 
   fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=25', options)
 	.then(response => response.json())
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
+
+  // YouTube API
+  function videos() {
+    console.log('it works')
+    // YT generic URL "https://www.googleapis.com/youtube/v3/search?q=something&key=YOUR_API_KEY&fields=items(id,snippet(title,thumbnails(default))&part=snippet" 
+    // Adrian's YT API key - AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI   
+    var youtubeUrl = "https://www.googleapis.com/youtube/v3/search?q="
+    var youtubeApi = "&limit=3&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI"
+    var youtubeVid = youtubeUrl+youtubeApi
+  };
 };
 
 console.log('hi mom');
