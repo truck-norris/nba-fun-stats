@@ -45,22 +45,23 @@ function displayGiphys(event) {
     var requestUrl = giphyUrl + '?api_key=' + apiKey + '&limit=5&rating=g&q=' + searchTerm
 
     fetch(requestUrl)
-    .then(function(response){
-        return response.json()
-    }).then(function(giphs){
-        console.log('here is data', giphs.data)
-
-        for (var i = 0; i < giphs.data.length; i++){
-            var title = giphs.data[i].title
+    .then(function(response) {
+      console.log('The status of this page is', response.status + '.');
+      return response.json();
+    }).then(function(giphs) {
+      console.log('You searched for:', giphs.data);
       
-           var imageTag = document.createElement('img')
-           var imageUrl = giphs.data[i].images.downsized_still.url
-           imageTag.setAttribute('src', imageUrl)
-           imageContainer.appendChild(imageTag)
-        }
-    })
+      for (var i = 0; i < giphs.data.length; i++) {
+        var title = giphs.data[i].title
+        var imageTag = document.createElement('img')
+        var imageTitle = document.createElement('p')
+        imageTag.setAttribute('src', giphs.data[i].images.original.url)
+        imageTitle.textContent = title
+        imageContainer.append(imageTag)
+      }
+    });
+};
 
-}
 
 giphyForm.addEventListener('submit', displayGiphys)
 
