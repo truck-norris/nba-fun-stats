@@ -8,14 +8,18 @@
     <title>Fun NBA Stats Generator</title>
 </head>
 <body>
-    <div class="search-box">
+    <div class="wrapper">
         <h1>Fun NBA Stats Generator</h1>
-        <form id="search-dropdown">
-            <input type='type' id='query-term' placeholder="Search for a Team....">
-        </form>
-        <section id="giphy-images"></section>
-        <button id="clear-btn">Clear</button>
+        <div class="search-input">
+          <a href="" target="_blank" hidden></a>
+          <input type="text" placeholder="Type to search..">
+          <div class="autocom-box">
+            <!-- here list are inserted from javascript -->
+          </div>
+          <div class="icon"><i class="fas fa-search"></i></div>
+        </div>
     </div>
+    <script src="assets/js/teams.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
