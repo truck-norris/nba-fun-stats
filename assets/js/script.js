@@ -127,9 +127,26 @@ function search() {
 }
 
 //Get the video to play
-function play(videoId)
+function play(videoId) {
+  if (player) {
+    player.loadVideoById(videoId);
+  } else {
+    player = new ytApiKey.Player('player', {
+      height: '360',
+      width: '640',
+      videoId: videoId,
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    })
+  }
+}
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+function onPlayerStateChange(event) {}
 
-
-console.log('hi mom');
+//console.log('hi mom');
 icon.addEventListener('click', displayGiphys)
 // clearBtn.addEventListener('click', clearScreen);
