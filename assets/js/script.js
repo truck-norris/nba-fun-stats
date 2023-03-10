@@ -36,18 +36,17 @@ function displayStats(event) {
 
   // NBA API
   const options = {
-	  method: 'GET',
-	  headers: {
-		  'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
-		  'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
-	  }
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
+      'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
+    }
   };
-
-  fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=25', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
-
+  
+  fetch('https://free-nba.p.rapidapi.com/teams?page=0', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
   // YouTube API
   function videos() {
     console.log('it works')
