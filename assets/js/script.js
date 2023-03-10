@@ -11,42 +11,72 @@
 // user clicks reset button
 // song and team stats dissappear
 
+// var searchInput = document.querySelector('#query-term')
+// var statsForm = document.querySelector('#search-dropdown')
+// var imageContainer = document.querySelector('#giphy-images')
+
+// function displayStats(event) {
+//   event.preventDefault()
+//   var searchTerm = searchInput.value
+//   var apiKey = '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195'
+//   var nbaUrl = 'https://api-nba-v1.p.rapidapi.com/seasons'
+//   var requestUrl = nbaUrl + '?api_key=' + apiKey + searchTerm
+
+//   fetch(requestUrl)
+//   .then(function(response){
+//     return response.json()
+//   }).then(function(stats){
+//     console.log('here is data', stats.data)
+//     for (var i = 0; i < stats.data.length; i++){
+//       var imageTag = document.createElement('p')
+//       statsForm.appendChild(imageTag)
+//     }
+//   });
+
 var searchInput = document.querySelector('#query-term')
-var statsForm = document.querySelector('#search-dropdown')
+var giphyForm = document.querySelector('#search-dropdown')
 var imageContainer = document.querySelector('#giphy-images')
 
-function displayStats(event) {
-  event.preventDefault()
-  var searchTerm = searchInput.value
-  var apiKey = '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195'
-  var nbaUrl = 'https://api-nba-v1.p.rapidapi.com/seasons'
-  var requestUrl = nbaUrl + '?api_key=' + apiKey + searchTerm
+function displayGiphys(event) {
+    event.preventDefault()
+    var searchTerm = searchInput.value
+    var apiKey = 'X1UC9EboOvWecSBjWd0oHOvipre8bgHX'
+    var giphyUrl = 'https://api.giphy.com/v1/gifs/search'
+    var requestUrl = giphyUrl + '?api_key=' + apiKey + '&limit=5&rating=g&q=' + searchTerm
 
-  fetch(requestUrl)
-  .then(function(response){
-    return response.json()
-  }).then(function(stats){
-    console.log('here is data', stats.data)
-    for (var i = 0; i < stats.data.length; i++){
-      var title = stats.data[i].title
-      var imageTag = document.createElement('p')
-      statsForm.appendChild(imageTag)
-    }
-  });
+    fetch(requestUrl)
+    .then(function(response){
+        return response.json()
+    }).then(function(giphs){
+        console.log('here is data', giphs.data)
+
+        for (var i = 0; i < giphs.data.length; i++){
+            var title = giphs.data[i].title
+      
+           var imageTag = document.createElement('img')
+           var imageUrl = giphs.data[i].images.downsized_still.url
+           imageTag.setAttribute('src', imageUrl)
+           imageContainer.appendChild(imageTag)
+        }
+    })
+
+}
+
+giphyForm.addEventListener('submit', displayGiphys)
 
   // NBA API
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
-      'X-RapidAPI-Host': 'free-nba.p.rapidapi.com'
-    }
-  };
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-RapidAPI-Key': '4658ee7f44msh4e201b34602efeep1a45bcjsnb2ea38009195',
+  //     'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+  //   }
+  // };
   
-  fetch('https://free-nba.p.rapidapi.com/teams?page=0', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+  // fetch('https://api-nba-v1.p.rapidapi.com/seasons', options)
+  //   .then(response => response.json())
+  //   .then(response => console.log(response))
+  //   .catch(err => console.error(err));
   // YouTube API
   function videos() {
     console.log('it works')
@@ -56,10 +86,10 @@ function displayStats(event) {
     var youtubeApi = "&limit=3&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI"
     var youtubeVid = youtubeUrl+youtubeApi
   };
-};
+
 
 console.log('hi mom');
-statsForm.addEventListener('submit', displayStats);
+// statsForm.addEventListener('submit', displayStats);
 
 // Autocomplete widget
 // $(function () {
