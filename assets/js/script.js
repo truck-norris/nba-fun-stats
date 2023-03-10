@@ -106,17 +106,28 @@ var searchInput = document.querySelector('#query-term')
       });
   };
   
-  // YouTube API
-  //GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=surfing&key=[YOUR_API_KEY] HTTP/1.1
-  // Adrian's YT API key - AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI
-  // https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=relevance&q=surfing&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI
-  function searchVideos() {
-    console.log('it works')
-    var youtubeUrl = "https://www.googleapis.com/youtube/v3/search?q="
-    var youtubeApi = "&limit=3&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI"
-    var youtubeVid = youtubeUrl+youtubeApi
-  };
+//Youtube Api
+//fetch('https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&order=relevance&q=surfing&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI')
+// Replace YOUR_API_KEY with your actual YouTube API key
+const ytApiKey = 'AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI';
+const ytUrl = 'https://www.googleapis.com/youtube/v3';
 
+let player;
+
+function search() {
+  const query = document.getElementById('query').value;
+  const url = `${ytUrl}/search?key=${ytApiKey}&part=snippet&q=${query}&type=video`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const videoId = data.items[0].id.videoId;
+      play(videoId);
+    })
+    .catch(error => console.error(error))
+}
+
+//Get the video to play
+function play(videoId)
 
 
 console.log('hi mom');
