@@ -86,17 +86,7 @@ function displayStats(event) {
   var nbaUrl = 'https://api-nba-v1.p.rapidapi.com/seasons'
   var requestUrl = nbaUrl + '?api_key=' + apiKey + searchTerm
 
-  fetch(requestUrl)
-  .then(function(response){
-    return response.json()
-  }).then(function(stats){
-    console.log('here is data', stats.data)
-    for (var i = 0; i < stats.data.length; i++){
-      var title = stats.data[i].title
-      var imageTag = document.createElement('p')
-      statsForm.appendChild(imageTag)
-    }
-  });
+giphyForm.addEventListener('submit', displayGiphys)
 
   // NBA API
   const options = {
@@ -121,7 +111,7 @@ function displayStats(event) {
     var youtubeApi = "&limit=3&key=AIzaSyD51ROkLO7Tj0gCUhdXzYzD-EmqGUCV1iI"
     var youtubeVid = youtubeUrl+youtubeApi
   };
-};
+
 
 console.log('hi mom');
 searchForm.addEventListener('submit', displayStats);
