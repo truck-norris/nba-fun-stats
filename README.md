@@ -1,4 +1,4 @@
-# Fun NBA Stats Generator
+# NBA Video and Gif Generator
 
 ## Description
 
